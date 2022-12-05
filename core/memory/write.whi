@@ -1,0 +1,71 @@
+export inline fn u8_write(ptr: i32, value: u8): none {
+  #(wasm) {
+    local.get $ptr
+    local.get $value
+    i32.store8_u
+  }
+}
+
+export inline fn i8_write(ptr: i32, value: i8): none {
+  #(wasm) {
+    local.get $ptr
+    local.get $value
+    i32.store8_s
+  }
+}
+
+export inline fn u16_write(ptr: i32, value: u16): none {
+  #(wasm) {
+    local.get $ptr
+    local.get $value
+    i32.store16_u
+  }
+}
+
+export inline fn i16_write(ptr: i32, value: i16): none {
+  #(wasm) {
+    local.get $ptr
+    local.get $value
+    i32.store16_s
+  }
+}
+
+export inline fn u32_write(ptr: i32, value: u32): none {
+  #(wasm) {
+    local.get $ptr
+    local.get $value
+    i32.store32_u
+  }
+}
+
+export inline fn i32_write(ptr: i32, value: i32): none {
+  #(wasm) {
+    local.get $ptr
+    local.get $value
+    i32.store
+  }
+}
+
+export inline fn i64_write(ptr: i32, value: i64): none {
+  #(wasm) {
+    local.get $ptr
+    local.get $value
+    i64.store
+  }
+}
+
+export inline fn f32_write(ptr: i32, value: f32): none {
+  #(wasm) {
+    local.get $ptr
+    local.get $value
+    f32.store
+  }
+}
+
+export inline fn f64_write(ptr: i32, value: f64): none {
+  #(wasm) {
+    local.get $ptr
+    local.get $value
+    f64.store
+  }
+}
