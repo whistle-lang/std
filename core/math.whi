@@ -1,3 +1,6 @@
+export val E: f64 = 2.7182818284590452353602874713527
+export val PI: f64 = 3.14159265359
+
 export fn min(a: i32, b: i32): i32 {
   if (a > b) {
     return b

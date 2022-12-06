@@ -1,6 +1,6 @@
 builtin @core { fd_write }
 
-import { malloc } "@core/memory/alloc.whi"
+import "@core/memory/alloc.whi"
 
 export fn println(msg: string) {
     let iov = malloc(12)
