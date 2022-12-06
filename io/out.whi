@@ -1,10 +1,11 @@
 builtin @core { fd_write }
 
+import "@core/memory/write.whi"
 import "@core/memory/alloc.whi"
 
 export fn println(msg: string) {
     let iov = malloc(12)
-    set_i32(iov, 0) // change 0  to start of string
-    set_i32(iov + 4, 12) // change 12 to length of string
+    i32_write(iov, 0) // change 0  to start of string
+    i32_write(iov + 4, 12) // change 12 to length of string
     fd_write(1, iov, 1, iov + 8)
 }
