@@ -1,11 +1,13 @@
-builtin @core { fd_write }
-
 import "@core/memory/write.whi"
 import "@core/memory/alloc.whi"
 
-export fn println(msg: string) {
-    let iov = malloc(12)
-    i32_write(iov, 0) // change 0  to start of string
-    i32_write(iov + 4, 12) // change 12 to length of string
-    fd_write(1, iov, 1, iov + 8)
+extern "wasi_unstable" {
+  fn fd_write(fd: i32, offset: i32, length: i32, nwritten_offset: i32 ): i32
+}
+
+export fn println(msg: str): i32 {
+  var iov = malloc(12)
+  i32_write(iov, 0) // change 0  to start of string
+  i32_write(iov + 4, 12) // change 12 to length of string
+  return fd_write(1, iov, 1, iov + 8)
 }

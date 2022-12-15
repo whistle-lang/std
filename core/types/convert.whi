@@ -1,0 +1,67 @@
+export fn i32_as_i64(v: i32): i64 {
+  return #(wasm) {
+    local.get $v
+    i64.extend_i32_s 
+  }
+}
+
+export fn i32_as_f32(v: i32): f32 {
+  return #(wasm) {
+    local.get $v
+    f32.convert_i32_s
+  }
+}
+
+export fn i32_as_f64(v: i32): f64 {
+  return #(wasm) {
+    local.get $v
+    f64.convert_i32_s
+  }
+}
+
+export fn i32_as_u32(v: i32): u32 {
+  return #(wasm) {
+    local.get $v
+  }
+}
+
+export fn i32_as_u64(v: i32): u64 {
+  return #(wasm) {
+    local.get $v
+    i64.extend_i32_s
+  }
+}
+
+export fn i64_as_i32(v: i64): i32 {
+  return #(wasm) {
+    local.get $v
+    i32.wrap_i64
+  }
+}
+  
+export fn i64_as_f32(v: i64): f32 {
+  return #(wasm) {
+    local.get $v
+    f32.convert_i64_s
+  }
+}
+  
+export fn i64_as_f64(v: i64): f64 {
+  return #(wasm) {
+    local.get $v
+    f64.convert_i64_s
+  }
+}
+  
+export fn i64_as_u32(v: i64): u32 {
+  return #(wasm) {
+    local.get $v
+    i32.wrap_i64
+  }
+}
+
+export fn i64_as_u64(v: i64): u64 {
+  return #(wasm) {
+    local.get $v
+  }
+}
