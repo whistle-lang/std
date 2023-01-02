@@ -1,7 +1,39 @@
+import "@core/bytes/read.whi"
+import "@core/bytes/convert.whi"
+
 extern "wasi_unstable" {
-  fn proc_exit(rval: i32): none
+  fn proc_exit(rval: i32): none,
+  fn clock_time_get(id: i32, precision: i64, time_offset: i32): i32,
 }
 
 export fn exit(code: i32): none {
     proc_exit(code)
 }
+
+export fn time(): i64 {
+  val REALTIME: i32 = 0
+  var temp_buf: i32 = 16
+  var precision: i64 =  1000000
+  var err: i32 = clock_time_get(REALTIME, precision, temp_buf)
+  var buf: i64 = i64_read(temp_buf)
+  return buf/precision
+}
+
+export fn hrtime(): i64 {
+  val MONOTONIC: i32 = 1
+  var temp_buf: i32 = 16
+  var precision: i64 =  0
+  var err: i32 = clock_time_get(MONOTONIC, precision, temp_buf)
+  var buf: i64 = i64_read(temp_buf)
+  return buf
+}
+
+export fn now(): f64 {
+  val REALTIME: i32 = 0
+  var temp_buf: i32 = 16
+  var precision: i64 =   1000000
+  var err: i32 = clock_time_get(REALTIME, precision, temp_buf)
+  var buf: i64 = i64_read(temp_buf)
+  return buf/precision
+}
+

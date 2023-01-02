@@ -1,5 +1,5 @@
-import "@core/bytes/write.whi"
-import "@core/memory/mod.whi"
+// import "@core/bytes/write.whi"
+// import "@core/memory/mod.whi"
 
 extern "wasi_unstable" {
   fn fd_advise(fd: i32, offset: u64, len: u64, advice: u32): i32,
@@ -16,51 +16,26 @@ export fn close(fd: i32): none {
   fd_close(fd)
 }
 
-export fn advise(fd: i32, offset: u64, len: u64, advice: u32): bool {
-  if fd_advise(fd, offset, len, advice) == 0 {
-    return true
-  } else {
-    return false
-  }
+export fn advise(fd: i32, offset: u64, len: u64, advice: u32): i32 {
+  return fd_advise(fd, offset, len, advice)
 }
 
-export fn allocate(fd: i32, offset: u64, len: u64): bool {
-  if fd_allocate(fd, offset, len) == 0 {
-    return true
-  } else {
-    return false
-  }
+export fn allocate(fd: i32, offset: u64, len: u64): i32 {
+  return fd_allocate(fd, offset, len)
 }
 
-export fn file_datasync(fd: i32): bool {
-  if fd_datasync(fd) == 0 {
-    return true
-  } else {
-    return false
-  }
+export fn file_datasync(fd: i32): i32 {
+  return fd_datasync(fd)
 }
 
-export fn file_sync(fd: i32): bool {
-  if fd_sync(fd) == 0 {
-    return true
-  } else {
-    return false
-  }
+export fn file_sync(fd: i32): i32 {
+  return fd_sync(fd)
 }
 
-export fn set_flags(fd: i32, flags: i32): bool {
-  if fd_fdstat_set_flags(fd, flags) == 0 {
-    return true
-  } else {
-    return false
-  }
+export fn set_flags(fd: i32, flags: i32): i32 {
+  return fd_fdstat_set_flags(fd, flags) 
 }
 
-export fn file_truncate(fd: i32, size: u64): bool {
-  if fd_filestat_set_size(fd, size) == 0 {
-    return true
-  } else {
-    return false
-  }
+export fn file_truncate(fd: i32, size: u64): i32 {
+  return fd_filestat_set_size(fd, size) 
 }
-
