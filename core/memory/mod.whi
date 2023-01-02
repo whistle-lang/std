@@ -1,6 +1,6 @@
 var ALLOCATOR_POINTER: i32 = 0
 
-export fn malloc(bytes: i32): i32 {
+export fn malloc(size: i32): i32 {
     var new_length: i32 = bytes + ALLOCATOR_POINTER
     if new_length > 2147483647 {
         return -1
@@ -8,6 +8,10 @@ export fn malloc(bytes: i32): i32 {
     var ptr: i32 = ALLOCATOR_POINTER
     ALLOCATOR_POINTER = new_length
     return ptr
+}
+
+export fn free(ptr: i32): none {
+    // TODO
 }
 
 export fn dealloc(ptr: i32, length: i32): bool {
@@ -38,5 +42,18 @@ export fn load(ptr: i64): i64 {
     local.get $ptr
     call $address_from_ptr
     i64.load
+  }
+}
+
+export fn grow(size: i32): i32 {
+  return #(wasm) {
+    local.get $size
+    memory.grow
+  }
+}
+
+export fn size(): i32 {
+  return #(wasm) {
+    memory.size
   }
 }
