@@ -1,0 +1,13 @@
+export fn isLeapYear(year: i32): bool {
+   if year % 4 == 0 {
+    return true
+   }
+   return false
+}
+
+export fn daysInYear(year: i32): i32 {
+    if isLeapYear(year) {
+        return 366
+    }
+    return 365
+}

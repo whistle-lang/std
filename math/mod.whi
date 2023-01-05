@@ -2,13 +2,13 @@
 // export val PI: f64 = 3.14159265359
 
 export fn min(a: i32, b: i32): i32 {
-  if (a > b) {
-    return b
-  } else {
-    return a
+    if (a > b) {
+      return b
+    } else {
+      return a
+    }
   }
-}
-
+  
 export fn max(a: i32, b: i32): i32 {
   if (a > b) {
     return a
@@ -16,3 +16,4 @@ export fn max(a: i32, b: i32): i32 {
     return b
   }
 }
+  
