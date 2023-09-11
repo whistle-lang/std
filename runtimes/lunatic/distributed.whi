@@ -1,0 +1,63 @@
+extern "lunatic::distributed" {
+    fn nodes_count(): i32,
+    fn get_nodes(nodes_ptr: i32, nodes_len: i32): i32,
+    fn node_id(): i64,
+    fn module_id(): i64,
+    fn send(node_id: i64, process_id: i64): i32,
+    fn send_receive_skip_search(node_id: i64, process_id: i64, timeout: i64): i32,
+    fn spawn(link: i64, node_id: i64, config_id: i64, module_id: i64, func_str_ptr: i32, func_str_len: i32, params_ptr: i32, params_len: i32, id_ptr: i32): i32
+}
+
+/**
+ * Returns the number of nodes in the cluster.
+ */
+fn nodesCount() -> i32 {
+    return nodes_count()
+}
+
+/**
+ * Returns the list of nodes in the cluster.
+ */
+fn getNodes(ptr: i32, len: i32) -> i32 {
+    return get_nodes(ptr, len)
+}
+
+/**
+ * Returns the id of the current node.
+ */
+fn nodeId() -> i64 {
+    return node_id()
+}
+
+/**
+ * Returns the id of the current module.
+ */
+fn moduleId() -> i64 {
+    return module_id()
+}
+
+/**
+ * Sends a message to a process on a node.
+ */
+fn sendMessage(nodeId: i64, processId: i64) -> i32 {
+    return send(nodeId, processId)
+}
+
+/**
+ * Sends a message to a process on a node and waits for a response.
+ */
+fn sendMessageReceive(nodeId: i64, processId: i64, timeout: i64) -> i32 {
+    return send_receive_skip_search(nodeId, processId, timeout)
+}
+
+/**
+ * Spawns a process on a node.
+ */
+fn spawnProcess(link: bool, nodeId: i64, configId: i64, moduleId: i64, func: &str, params: &str) -> i32 {
+    let func_ptr = func.as_ptr() as i32;
+    let func_len = func.len() as i32;
+    let params_ptr = params.as_ptr() as i32;
+    let params_len = params.len() as i32;
+    let id_ptr = 0 as i32;
+    return spawn(link as i64, nodeId, configId, moduleId, func_ptr, func_len, params_ptr, params_len, id_ptr)
+}
