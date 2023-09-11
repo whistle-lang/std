@@ -53,11 +53,6 @@ fn sendMessageReceive(nodeId: i64, processId: i64, timeout: i64) -> i32 {
 /**
  * Spawns a process on a node.
  */
-fn spawnProcess(link: bool, nodeId: i64, configId: i64, moduleId: i64, func: &str, params: &str) -> i32 {
-    let func_ptr = func.as_ptr() as i32;
-    let func_len = func.len() as i32;
-    let params_ptr = params.as_ptr() as i32;
-    let params_len = params.len() as i32;
-    let id_ptr = 0 as i32;
-    return spawn(link as i64, nodeId, configId, moduleId, func_ptr, func_len, params_ptr, params_len, id_ptr)
+fn spawnProcess(link: i64, nodeId: i64, configId: i64, moduleId: i64, funcStrPtr: i32, funcStrLen: i32, paramsPtr: i32, paramsLen: i32, idPtr: i32) -> i32 {
+    return spawn(link, nodeId, configId, moduleId, funcPtr, funcLen, paramsPtr, paramsLen, idPtr)
 }
