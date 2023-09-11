@@ -1,0 +1,17 @@
+extern "lunatic::networking" {
+    fn resolve(name_str_ptr: i32, name_str_len: i32, timeout: i64, id_ptr: i32): i32,
+    fn drop_dns_iterator(id: i64): none,
+    fn resolve_next(dns_iter_id: i64, addr_type_ptr: i32, add_u8_ptr: i32, port_u16_ptr: i32, flow_info_u32_ptr: i32, scope_id_u32_ptr: i32): i32,
+}
+
+fn resolveDNS(name_str_ptr: i32, name_str_len: i32, timeout: i64, id_ptr: i32): i32 {
+    return resolve(name_str_ptr, name_str_len, timeout, id_ptr)
+}
+
+fn dropDNSIterator(id: i64): none {
+    return drop_dns_iterator(id)
+}
+
+fn resolveNext(dns_iter_id: i64, addr_type_ptr: i32, add_u8_ptr: i32, port_u16_ptr: i32, flow_info_u32_ptr: i32, scope_id_u32_ptr: i32): i32 {
+    return resolve_next(dns_iter_id, addr_type_ptr, add_u8_ptr, port_u16_ptr, flow_info_u32_ptr, scope_id_u32_ptr)
+}

@@ -1,0 +1,122 @@
+extern "lunatic::networking" {
+    fn drop_tcp_listener(id: i64): none,
+    fn drop_tcp_stream(id: i64): none,
+    fn clone_tcp_stream(id: i64): i64,
+    fn tcp_bind(addr_type: i32, addr_u8_ptr: i32, port: i32, flow_info: i32, scope_id: i32, id_u64_ptr: i32): i32,
+    fn tcp_accept(listener_id: i64, id_ptr: i32, socket_addr_id_ptr: i32): i32,
+    fn tcp_read(stream_id: i64, buffer_ptr: i32, buffer_len: i32, opaque_ptr: i32): i32,
+    fn tcp_peek(stream_id: i64, buffer_ptr: i32, buffer_len: i32, opaque_ptr: i32): i32,
+    fn tcp_write_vectored(stream_id: i64, ciovec_array_ptr: i32, ciovec_array_len: i32, opaque_ptr: i32): i32,
+    fn tcp_connect(addr_type: i32, addr_u8_ptr: i32, port: i32, flow_info: i32, scope_id: i32, timeout: i64, id_u64_ptr: i32): i32,
+    fn tcp_local_addr(tcp_listener_id: i64, id_u64_ptr: i32): i32,
+    fn set_read_timeout(tcp_listener_id: i64,duration: i64): none,
+    fn get_read_timeout(tcp_listener_id: i64): i32,
+    fn set_peek_timeout(tcp_listener_id: i64, duration: i64): i32,
+    fn get_peek_timeout(tcp_listener_id: i64): i32,
+    fn tcp_flush(tcp_listener_id: i64, error_id_ptr: i32): i32
+}
+
+/**
+* Drop a TCP listener.
+*/
+fn dropTCPListener(id: i64) {
+    return drop_tcp_listener(id)
+}
+
+/**
+ * Drop a TCP stream.
+*/
+fn dropTCPStream(id: i64) {
+    return drop_tcp_stream(id)
+}
+
+/**
+ * Clone a TCP stream.
+*/
+fn cloneTCPStream(id: i64) -> i64 {
+    return clone_tcp_stream(id)
+}
+
+/**
+ * Bind a TCP listener.
+*/
+fn TCPBind(addr_type: i32, addr_u8_ptr: i32, port: i32, flow_info: i32, scope_id: i32, id_u64_ptr: i32): i32 {
+    return tcp_bind(addr_type, addr_u8_ptr, port, flow_info, scope_id, id_u64_ptr)
+}
+
+/**
+ * Accept a TCP connection.
+*/
+fn TCPAccept(listener_id: i64, id_ptr: i32, socket_addr_id_ptr: i32): i32 {
+    return tcp_accept(listener_id, id_ptr, socket_addr_id_ptr)
+}
+
+/**
+ * Read from a TCP stream.
+*/
+fn TCPRead(stream_id: i64, buffer_ptr: i32, buffer_len: i32, opaque_ptr: i32): i32 {
+    return tcp_read(stream_id, buffer_ptr, buffer_len, opaque_ptr)
+}
+
+/**
+ * Peek from a TCP stream.
+*/
+fn TCPPeek(stream_id: i64, buffer_ptr: i32, buffer_len: i32, opaque_ptr: i32): i32 {
+    return tcp_peek(stream_id, buffer_ptr, buffer_len, opaque_ptr)
+}
+
+/**
+ * Write to a TCP stream.
+*/
+fn TCPWriteVectored(stream_id: i64, ciovec_array_ptr: i32, ciovec_array_len: i32, opaque_ptr: i32): i32 {
+    return tcp_write_vectored(stream_id, ciovec_array_ptr, ciovec_array_len, opaque_ptr)
+}
+
+/**
+ * Connect to a TCP stream.
+*/
+fn TCPConnect(addr_type: i32, addr_u8_ptr: i32, port: i32, flow_info: i32, scope_id: i32, timeout: i64, id_u64_ptr: i32): i32 {
+    return tcp_connect(addr_type, addr_u8_ptr, port, flow_info, scope_id, timeout, id_u64_ptr)
+}
+
+/**
+ * Get the local address of a TCP listener.
+*/
+fn TCPLocalAddr(tcp_listener_id: i64, id_u64_ptr: i32): i32 {
+    return tcp_local_addr(tcp_listener_id, id_u64_ptr)
+}
+
+/**
+ * Set the read timeout of a TCP listener.
+*/
+fn setReadTimeout(tcp_listener_id: i64,duration: i64) {
+    return set_read_timeout(tcp_listener_id, duration)
+}
+
+/**
+ * Get the read timeout of a TCP listener.
+*/
+fn getReadTimeout(tcp_listener_id: i64): i32 {
+    return get_read_timeout(tcp_listener_id)
+}
+
+/**
+ * Set the peek timeout of a TCP listener.
+*/
+fn setPeekTimeout(tcp_listener_id: i64, duration: i64): i32 {
+    return set_peek_timeout(tcp_listener_id, duration)
+}
+
+/**
+ * Get the peek timeout of a TCP listener.
+*/
+fn getPeekTimeout(tcp_listener_id: i64): i32 {
+    return get_peek_timeout(tcp_listener_id)
+}
+
+/**
+ * Flush a TCP listener.
+*/
+fn TCPFlush(tcp_listener_id: i64, error_id_ptr: i32): i32 {
+    return tcp_flush(tcp_listener_id, error_id_ptr)
+}
