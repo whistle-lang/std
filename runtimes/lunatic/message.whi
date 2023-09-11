@@ -1,0 +1,107 @@
+extern "lunatic::message" {
+    fn create_data(tag: i64, capacity: i64): none,
+    fn write_data(data: i32, data_len: i32): i32,
+    fn read_data(data: i32, data_len: i32): i32,
+    fn seek_data(position: i64): none,
+    fn get_tag(): i64,
+    fn data_size(): i64,
+    fn push_tcp_stream(tcp_stream_id: i64): i64,
+    fn take_tcp_stream(index: i64): i64,
+    fn send(process_id: i64): i32,
+    fn push_udp_socket(udp_socket_id: i64): i64,
+    fn take_udp_socket(resource_id: i64): i64,
+    fn send_receive_skip_search(process_id: i64, timeout: i64): i32,
+    fn receive(tag: i32, tag_length: i32, timeout: i64): i32,
+}
+
+/**
+ * Create a new data object with the given tag and capacity. 
+ */
+export fn createData(tag: i64, capacity: i64) {
+    return create_data(tag, capacity)
+}
+
+/**
+ * Write data to the data object. 
+ */
+export fn writeData(data: i32, data_len: i32): i32 {
+    return write_data(data, data_len)
+}
+
+/**
+ * Read data from the data object. 
+ */
+export fn readData(data: i32, data_len: i32): i32 {
+    return read_data(data, data_len)
+}
+    
+/**
+ * Seek to the given position in the data object. 
+ */
+export fn seekData(position: i64) {
+    return seek_data(position)
+}
+
+/**
+ * Get the tag of the data object. 
+ */
+export fn getTag(): i64 {
+    return get_tag()
+}
+
+
+/**
+ * Get the size of the data object. 
+ */
+export fn dataSize(): i64 {
+    return data_size()
+}
+
+/**
+ * Push a tcp stream to the data object. 
+ */
+export fn pushTCPStream(tcp_stream_id: i64): i64 {
+    return push_tcp_stream(tcp_stream_id)
+}
+
+/**
+ * Take a tcp stream from the data object. 
+ */
+export fn takeTCPStream(index: i64): i64 {
+    return take_tcp_stream(index)
+}
+
+/**
+ * Send the data object to the given process. 
+ */
+export fn sendData(process_id: i64): i32 {
+    return send(process_id)
+}
+
+/**
+ * Push a udp socket to the data object. 
+ */
+export fn pushUDPSocket(udp_socket_id: i64): i64 {
+    return push_udp_socket(udp_socket_id)
+}
+
+/**
+ * Take a udp socket from the data object. 
+ */
+export fn takeUDPSocket(resource_id: i64): i64 {
+    return take_udp_socket(resource_id)
+}
+
+/**
+ * Send the data object to the given process and receive a response. 
+ */
+export fn sendReceiveSkipSearch(process_id: i64, timeout: i64): i32 {
+    return send_receive_skip_search(process_id, timeout)
+}
+
+/**
+ * Receive a data object with the given tag. 
+ */
+export fn receiveData(tag: i32, tag_length: i32, timeout: i64): i32 {
+    return receive(tag, tag_length, timeout)
+}
