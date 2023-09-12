@@ -1,0 +1,15 @@
+extern "lunatic::networking" {
+    fn udp_bind(addr_type: i32, addr_u8_ptr: i32, port: i32, flow_info: i32, scope_id: i32, id_u64_ptr: i32): i32,
+    fn drop_udp_socket(udp_socket_id: i64): none,
+    fn udp_receive(socket_id: i64, buffer_ptr: i32, buffer_len: i32, opaque_ptr: i32): i32,
+    fn udp_receive_from(socket_id: i64, buffer_ptr: i32, buffer_len: i32, opaque_ptr: i32, dns_iter_ptr: i32): i32,
+    fn udp_connect(udp_socket_id: i64, addr_type: i32, addr_u8_ptr: i32, port: i32, flow_info: i32, scope_id: i32, timeout_duration: i64, id_u64_ptr: i32): i32,
+    fn clone_udp_socket(udp_socket_id: i64): i64,
+    fn set_udp_socket_broadcast(udp_socket_id: i64, broadcast: bool): none,
+    fn get_udp_socket_broadcast(udp_socket_id: i64): bool,
+    fn set_udp_socket_ttl(udp_socket_id: i64, ttl: i32): none,
+    fn get_udp_socket_ttl(udp_socket_id: i64): i32,
+    fn udp_send_to(socket_id: i64, buffer_ptr: i32, buffer_len: i32, addr_type: i32, addr_u8_ptr: i32, port: i32, flow_info: i32, scope_id: i32, opaque_ptr: i32): i32,
+    fn udp_send(socket_id: i64, buffer_ptr: i32, buffer_len: i32, opaque_ptr: i32): i32,
+    fn udp_local_addr(udp_socket_id: i64, id_u64_ptr: i32): i32,
+}

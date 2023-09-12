@@ -1,0 +1,8 @@
+extern "lunatic::metrics" {
+    fn counter(name: i32, name_len: i32, value: i64),
+    fn increment_counter(name: i32, name_len: i32),
+    fn gauge(name: i32, name_len: i32, value: f64),
+    fn increment_gauge(name: i32, name_len: i32, value: f64),
+    fn decrement_gauge(name: i32, name_len: i32, value: f64),
+    fn histogram(name: i32, name_len: i32, value: f64),
+}

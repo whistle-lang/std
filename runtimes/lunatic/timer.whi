@@ -1,0 +1,4 @@
+extern "lunatic::timer" {
+    fn send_after(process_id: i64, duration: i64): i64,
+    fn cancel_timer(timer_id: i64): i32,
+}

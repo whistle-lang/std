@@ -3,24 +3,3 @@ extern "lunatic::error" {
   fn to_string(id: i64, ptr: i32): none,
   fn drop_error(id: i64): none,
 }
-
-/**
- * Get the length of the error message.
- */
-fn stringSize(id: i64) -> i32 {
-  string_size(id)
-}
-
-/**
- * Copy the error message into the given buffer.
- */
-fn toString(id: i64, ptr: i32) {
-  to_string(id, ptr)
-}
-
-/**
- * Drop the error.
- */
-fn dropError(id: i64) {
-  drop_error(id)
-}

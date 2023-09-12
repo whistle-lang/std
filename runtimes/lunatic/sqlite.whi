@@ -1,0 +1,16 @@
+extern "lunatic::sqlite" {
+    fn open(path_str_ptr: i32, path_str_len: i32, connection_id_ptr: i32): i64,
+    fn execute(conn_id: i64, exec_str_ptr: i32, exec_str_len: i32): i32,
+    fn query_prepare(conn_id: i64, query_str_ptr: i32, query_str_len: i32): i64,
+    fn bind_value(statement_id: i64, bind_data_ptr: i32, bind_data_len: i32): none,
+    fn sqlite3_changes(conn_id: i64): i32,
+    fn statement_reset(statement_id: i64): none,
+    fn read_column(statement_id: i64, column_index: i32, opaque_ptr: i32): i32,
+    fn column_names( statement_id: i64, opaque_ptr: i32): i32,
+    fn read_row(statement_id: i64, opaque_ptr: i32): i32,
+    fn last_error(conn_id: i64, opaque_ptr: i32): i32,
+    fn sqlite3_finalize(statement_id: i64): none,
+    fn sqlite3_step(statement_id: i64): i32,
+    fn column_count(statement_id: i64): i32,
+    fn column_name(statement_id: i64, column_index: i32, opaque_ptr: i32): i32,
+}

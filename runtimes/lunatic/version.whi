@@ -1,0 +1,5 @@
+extern "lunatic::version" {
+    fn major(): i32,
+    fn minor(): i32,
+    fn patch(): i32,
+}

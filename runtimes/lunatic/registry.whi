@@ -3,25 +3,3 @@ extern "lunatic::registry" {
     fn get(name_str_ptr: i32, name_str_len: i32 node_id_ptr: i32, process_id_ptr: i32): i32,
     fn remove(name_str_ptr: i32, name_str_len: i32): none,
 }
-
-/**
- * Registers process with ID under `name`.
- */
-fn putRegistry(name_str_ptr: i32, name_str_len: i32, node_id: i64, process_id: i64) {
-    return put(name_str_ptr, name_str_len, node_id, process_id)
-}
-
-/**
- * Returns process ID registered under `name`.
- */
-fn getRegistry(name_str_ptr: i32, name_str_len: i32 node_id_ptr: i32, process_id_ptr: i32): i32 {
-    return get(name_str_ptr, name_str_len, node_id_ptr, process_id_ptr)
-}
-
-/**
- * Removes process ID registered under `name`.
- */
-fn removeRegistry(name_str_ptr: i32, name_str_len: i32): none {
-    return remove(name_str_ptr, name_str_len)
-}
-
